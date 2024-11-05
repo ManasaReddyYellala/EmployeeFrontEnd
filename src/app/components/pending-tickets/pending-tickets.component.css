@@ -1,0 +1,12 @@
+  /* Prevent layout shifts when switching tabs */
+  .table {
+    transition: opacity 0.2s ease-in-out;
+  }
+  
+  .hidden {
+    opacity: 0;
+  }
+  
+  
+  
+  

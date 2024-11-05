@@ -1,0 +1,158 @@
+.header {
+    display: flex; 
+    align-items: center; 
+    justify-content: space-between; 
+    height: 100px; 
+    width: 100%; 
+    background-color: rgba(0, 123, 255, 0.9); 
+    color: white; 
+    padding: 10px 20px; 
+    position: fixed; 
+    top: 0; 
+    left: 0; 
+    z-index: 1; 
+}
+body {
+    overflow-x: auto; /* Allow horizontal scrolling */
+}
+.logo-container {
+    display: flex; /* Use flexbox for logo and name layout */
+    align-items: center; /* Center align logo and name vertically */
+}
+
+.logo {
+    height: 50px; /* Adjust logo size as needed */
+    margin-right: 50px; /* Small distance between logo and organization name */
+}
+
+.organization-name {
+    color: blueviolet; /* Color for the organization name */
+    margin: 0; /* Remove default margin */
+    font-size: 30px; /* Adjust font size if needed */
+    white-space: nowrap; /* Prevent text wrapping */
+}
+
+.icons {
+    display: flex; /* Use flexbox for icon layout */
+    align-items: center; /* Center icons vertically */
+}
+
+.notification-icon, .menu-icon {
+    font-size: 24px; /* Icon size */
+    color: white; /* Icon color */
+    margin-left: 20px; /* Space between icons */
+    cursor: pointer; /* Change cursor to pointer on hover */
+}
+
+.notification-icon:hover, .menu-icon:hover {
+    color: #FFD700; /* Change color on hover */
+}
+/* Sidebar Styles */
+.sidebar {
+    position: fixed; /* Fix the sidebar position */
+    top: 50%; /* Center vertically */
+    right: 0; /* Align to the right */
+    transform: translateY(-50%) translateX(100%); /* Hide initially */
+    width: 200px; /* Width of the sidebar */
+    background-color: rgb(32, 144, 178); /* Background color for visibility */
+    box-shadow: -2px 0 5px rgba(0, 0, 0, 0.5); /* Shadow for depth */
+    transition: transform 0.3s ease; /* Smooth transition */
+}
+
+.sidebar.active {
+    transform: translateY(-50%) translateX(0); /* Show sidebar when active */
+}
+
+.sidebar ul {
+    list-style: none; /* Remove bullet points */
+    padding: 20px; /* Padding inside sidebar */
+}
+
+.sidebar li {
+    padding: 15px 20px; /* Padding for menu items */
+    cursor: pointer; /* Pointer cursor on hover */
+    transition: background 0.3s ease; /* Smooth transition for background color */
+}
+
+/* Add this to your existing CSS file for the Employee Dashboard */
+.content {
+    margin-top: 120px; /* Adjust this value based on your header height */
+    padding: 20px; /* Optional: Add padding for better spacing */
+}
+
+/* Optional: Add margin to the h2 element directly */
+.content h2 {
+    margin-top: 20px; /* Space above the h2 element */
+}
+
+
+.sidebar li.active {
+    background-color: rgba(255, 255, 255, 0.5); /* Highlight background for the selected menu item */
+    color: #FFD700; /* Change text color for active menu item */
+}
+
+.backdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 2;
+    background: rgba(0, 0, 0, 0.5); /* Dark backdrop */
+    display: flex;
+    align-items: center; /* Center the sidebar */
+    justify-content: center; /* Center the sidebar */
+    z-index: 1; /* Behind sidebar */
+}
+
+.sidebar li {
+    padding: 15px 0; /* Padding for menu items */
+    cursor: pointer; /* Pointer cursor on hover */
+    transition: background 0.3s ease; /* Smooth transition for background color */
+}
+
+.menu-item {
+    padding: 15px 0; /* Padding for menu items */
+    cursor: pointer; /* Pointer cursor on hover */
+    transition: background 0.3s ease, color 0.3s ease; /* Smooth transition for background and text color */
+}
+
+.menu-item:hover {
+    background-color: rgba(255, 255, 255, 0.3); /* Light background color on hover */
+    color: #0044ff; /* Change text color on hover */
+}
+
+.menu-item.active {
+    background-color: rgba(255, 255, 255, 0.5); /* Highlight background for active menu item */
+    color: #00b7ff; /* Change text color for active menu item */
+}
+.table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+    font-size: 18px;
+    text-align: left;
+  }
+  
+  .table th, .table td {
+    padding: 12px 15px;
+    border: 1px solid #ddd;
+  }
+  
+  .table th {
+    background-color: #007bff;
+    color: white;
+  }
+  
+  .table tr:nth-child(even) {
+    background-color: #f3f3f3;
+  }
+  
+  .dashboard-image {
+    width: 100%; /* Make the image full width */
+    position: fixed; /* Fix the image to the viewport */
+    top: 0; /* Align to the top of the viewport */
+    left: 0; /* Align to the left of the viewport */
+    height: 100%; /* Make the image full height */
+    object-fit: cover; /* Ensure the image covers the area without distortion */
+    z-index: -1; /* Send the image behind other content */
+  }

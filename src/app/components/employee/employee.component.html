@@ -1,0 +1,36 @@
+<div class="container">
+  <h5 class="card-title text-center" style="color: darkblue;">Employee Login</h5>
+
+  <form [formGroup]="employeeForm" (ngSubmit)="onLogin()">
+    <div class="form-group">
+      <label for="emporgname">Organization Name:</label>
+      <select id="emporgname" class="form-control" formControlName="emporgname" required>
+        <option value="" disabled selected>Select your Organization</option>
+        <option *ngFor="let org of organizations" [value]="org.orgId">{{ org.orgName }}</option>
+      </select>
+      <div *ngIf="formControls.emporgname?.invalid && (formControls.emporgname?.dirty || formControls.emporgname?.touched)" class="text-danger">
+        <div *ngIf="formControls.emporgname?.errors?.required">Organization Name is required.</div>
+      </div>
+    </div>
+    
+
+    <div class="form-group">
+      <label for="empusername">Username:</label>
+      <input type="text" id="empusername" class="form-control" formControlName="empusername" placeholder="Enter your EmpUsername" required>
+      <div *ngIf="formControls.empusername.invalid && (formControls.empusername.dirty || formControls.empusername.touched)" class="text-danger">
+        <div *ngIf="formControls.empusername.errors?.required">Username is required.</div>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="emppassword">Password:</label>
+      <input type="password" id="emppassword" class="form-control" formControlName="emppassword" placeholder="Enter your EmpPassword" required>
+      <div *ngIf="formControls.emppassword.invalid && (formControls.emppassword.dirty || formControls.emppassword.touched)" class="text-danger">
+        <div *ngIf="formControls.emppassword.errors?.required">Password is required.</div>
+      </div>
+    </div>
+
+    <button type="submit" class="btn btn-primary w-100">Login</button>
+    <div *ngIf="errorMessage" class="text-danger text-center mt-2">{{ errorMessage }}</div>
+  </form>
+</div>

@@ -1,0 +1,28 @@
+<div>
+    <div class="header">
+        <img [src]="orgImg" class="logo">
+        <h1 class="organization-name">{{org?.orgName}}</h1>
+        <div class="menu-icons">
+            <span class="icon menu-icon" (click)="toggleSidebar()">☰</span> <!-- Menu icon -->
+        </div>
+    </div>
+
+
+    <div class="sidebar" [class.active]="sidebarActive">
+        <ul>
+            <li class="menu-item" routerLink="/tester-dashboard/{{empUsername}}/home" (click)="closeSidebar()">Home</li>
+            <li class="menu-item" routerLink="raise-tickets" (click)="closeSidebar()">Raise Tickets</li>
+            <li class="menu-item" routerLink="assigned-tickets" (click)="closeSidebar()">Assigned Tickets</li>
+            <li class="menu-item" routerLink="pending-tickets" (click)="closeSidebar()">Pending Tickets</li>
+            <li class="menu-item" routerLink="closed-ticket" (click)="closeSidebar()">Closed Tickets</li>
+            <li><button class="btn btn-danger" style="margin-left: 30px;" (click)="logout()">Logout</button></li>
+        </ul>
+    </div>
+    <div class="content">
+        <h2 style="color: darkblue;text-align: center;">Welcome {{empUsername}}!</h2>
+        
+        <img src="assets/tree.jpg" class="dashboard-image">
+        <router-outlet></router-outlet> 
+        
+    </div>
+

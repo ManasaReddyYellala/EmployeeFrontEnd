@@ -1,0 +1,57 @@
+<h3 class="card-title text-center" style="color: darkblue;">Raise Ticket</h3>
+<div class="container mt-4">
+  <form [formGroup]="raiseTicketForm" (ngSubmit)="onSubmit()">
+      <div class="form-group">
+          <label for="ticketType">Ticket Type</label>
+          <select id="ticketType" formControlName="ticketType" class="form-control" required>
+              <option value="" enabled selected>Select Ticket Type</option>
+              <option value="bug">Bug Tickets</option>
+              <option value="feature">Feature Tickets</option>
+              <option value="task">Task Tickets</option>
+              <option value="technical-debt">Technical Debt Tickets</option>
+              <option value="change-request">Change Request Tickets</option>
+              <option value="hotfix">Hotfix or Patch Tickets</option>
+              <option value="epic-user-story">Epic and User Story Tickets</option>
+              <option value="spike">Spike Tickets</option>
+              <option value="test-case">Test Case Tickets</option>
+          </select>
+          <div *ngIf="raiseTicketForm.get('ticketType')?.touched && raiseTicketForm.get('ticketType')?.invalid" class="text-danger">
+              <small *ngIf="raiseTicketForm.get('ticketType')?.errors?.['required']">Please Select Ticket Type</small>
+          </div>
+      </div>
+
+      <div class="form-group">
+          <label for="ticketDescription">Ticket Description</label>
+          <textarea id="ticketDescription" formControlName="ticketDescription" class="form-control" placeholder="Ticket Description" required></textarea>
+          <div *ngIf="raiseTicketForm.get('ticketDescription')?.touched && raiseTicketForm.get('ticketDescription')?.invalid" class="text-danger">
+              <small *ngIf="raiseTicketForm.get('ticketDescription')?.errors?.['required']">Please Write Ticket Description</small>
+          </div>
+      </div>
+
+      <div class="form-group">
+          <label for="projectName">Select Project</label>
+          <select id="projectName" formControlName="projectName" class="form-control" required (change)="onProjectChange($event)">
+              <option value="" disabled selected>Select a Project</option>
+              <option *ngFor="let project of projects" [value]="project.id">{{ project.name }}</option>
+          </select>
+          <div *ngIf="raiseTicketForm.get('projectName')?.touched && raiseTicketForm.get('projectName')?.invalid" class="text-danger">
+              <small *ngIf="raiseTicketForm.get('projectName')?.errors?.['required']">Please Select Project</small>
+          </div>
+      </div>
+      
+      <div class="form-group" *ngIf="developers.length > 0">
+          <label for="developerName">Select Developer</label>
+          <select id="developerName" formControlName="developerName" class="form-control" required>
+              <option value="" enabled selected>Select a Developer</option>
+              <option *ngFor="let developer of developers" [value]="developer">{{ developer }}</option>
+          </select>
+          <div *ngIf="raiseTicketForm.get('developerName')?.touched && raiseTicketForm.get('developerName')?.invalid" class="text-danger">
+              <small *ngIf="raiseTicketForm.get('developerName')?.errors?.['required']">Please Select Employee Name</small>
+          </div>
+      </div>
+      
+      <div class="mt-3" style="text-align: center;">
+          <button type="submit" class="btn btn-primary">Raise Ticket</button>
+      </div>
+  </form>
+</div>

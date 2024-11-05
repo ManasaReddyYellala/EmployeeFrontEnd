@@ -1,0 +1,36 @@
+<h2 style="color: darkblue; text-align: center;">Assigned Tickets</h2>
+<table class="table table-hover" *ngIf="tickets.length > 0">
+  <thead>
+    <tr>
+      <th>Sno</th>
+      <th>Ticket ID</th>
+      <th>Ticket Type</th>
+      <th>Description</th>
+      <th>Project Name</th>
+      <th>Raised By</th>
+      <th>Assigned To</th>
+      <th>Raised Time</th>
+      <th *ngIf="empRole=='developer'">Select Estimated</th>
+      <th *ngIf="empRole=='tester'">Closing time</th>
+      <th *ngIf="empRole=='developer'">Action</th> 
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let ticket of tickets; let i = index">
+      <td>{{i + 1}}</td>
+      <td>{{ ticket.ticketId }}</td>
+      <td>{{ ticket.ticketType }}</td>
+      <td>{{ ticket.ticketDescription }}</td>
+      <td>{{ ticket.project.projectName }}</td>
+      <td>{{ ticket.ticketRaisedBy }}</td>
+      <td>{{ ticket.ticketAssignedTo }}</td>
+      <td >{{ ticket.ticketRaisedDate | date:'medium' }}</td>  
+    <td>
+      <span *ngIf="empRole == 'tester'">N/A</span>
+      <input *ngIf="empRole == 'developer'" type="datetime-local" [(ngModel)]="ticket.selectedDate" class="form-select" placeholder="Set Closing Time" />
+    </td>
+    <td *ngIf="empRole == 'developer'">
+      <button type="button" (click)="setTargetCompletionTime(ticket.ticketId, ticket.selectedDate)" class="btn btn-primary">Submit</button>
+    </td>
+  </tbody>
+</table>
